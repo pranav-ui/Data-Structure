@@ -12,8 +12,7 @@ class Node {
     }
 }
 
-class bst_greater_sum_tree 
-{
+class bst_greater_sum_tree {
     int sum = 0;
 
     void findsum(Node root) {

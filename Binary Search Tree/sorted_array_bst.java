@@ -10,8 +10,7 @@ class Node {
     }
 }
 
-public class sorted_array_bst 
-{
+public class sorted_array_bst {
     void preorder(Node root) {
         if (root == null)
             return;
@@ -19,17 +18,17 @@ public class sorted_array_bst
         preorder(root.left);
         preorder(root.right);
     }
-    Node constructbst(int arr[],int start,int end)
-    {
-        if(start>end)
-            return null;
-        
-        int mid = (start+end)/2;
-        Node root=new Node(arr[mid]);
-        
-        root.left=constructbst(arr,start,mid-1);
 
-        root.right=constructbst(arr,mid+1, end);
+    Node constructbst(int arr[], int start, int end) {
+        if (start > end)
+            return null;
+
+        int mid = (start + end) / 2;
+        Node root = new Node(arr[mid]);
+
+        root.left = constructbst(arr, start, mid - 1);
+
+        root.right = constructbst(arr, mid + 1, end);
 
         return root;
     }
