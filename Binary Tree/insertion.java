@@ -18,8 +18,7 @@ class insertion{
 
         while(!q.isEmpty())
         {
-            temp=q.peek();
-            q.remove();
+            temp=q.poll();
 
             if(temp.left==null){
                 temp.left=new Node(key);
