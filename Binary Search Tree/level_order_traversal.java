@@ -34,9 +34,9 @@ public class level_order_traversal {
 
     void levelOrder() {
         int h = height(root);
-        for (int i = 1; i <= h; i++) {
+        for (int i = 1; i <= h; i+=2) {
             printGivenLevel(root, i);
-            System.out.println();
+            // System.out.println();
         }
     }
 
@@ -77,7 +77,7 @@ public class level_order_traversal {
         tree.push(70);
         tree.push(60);
         tree.push(80);
-
+        System.out.println("Level Order Traversal");
         tree.levelOrder();
 
     }
