@@ -10,59 +10,53 @@ class Node {
     }
 }
 
-class Index { 
-    int index; 
-} 
+class Index {
+    int index;
+}
 
 class btFromPostAndIn {
 
     // Node root;
 
-    Node buildTree(int in[],int post[],int n)
-    {
+    Node buildTree(int in[], int post[], int n) {
         Index pIndex = new Index();
-        pIndex.index=n-1;
-        return buildTreeUtil(in,post,0,n-1,pIndex);
+        pIndex.index = n - 1;
+        return buildTreeUtil(in, post, 0, n - 1, pIndex);
 
     }
 
-    Node buildTreeUtil(int in[],int post[],int inStart,int inEnd,Index pIndex)
-    {
-        if(inStart > inEnd)
+    Node buildTreeUtil(int in[], int post[], int inStart, int inEnd, Index pIndex) {
+        if (inStart > inEnd)
             return null;
 
         Node node = new Node(post[pIndex.index]);
         (pIndex.index)--;
 
-        if(inStart==inEnd)
+        if (inStart == inEnd)
             return node;
-        
-        int sIndex= searchIndex(in,inStart,inEnd,node.data);
 
-        
-        node.right=buildTreeUtil(in, post, sIndex+1, inEnd, pIndex);
-        node.left=buildTreeUtil(in, post, inStart, sIndex-1, pIndex);
-        
+        int sIndex = searchIndex(in, inStart, inEnd, node.data);
+
+        node.right = buildTreeUtil(in, post, sIndex + 1, inEnd, pIndex);
+        node.left = buildTreeUtil(in, post, inStart, sIndex - 1, pIndex);
 
         return node;
     }
 
-    int searchIndex(int arr[],int start,int end,int value)
-    {
+    int searchIndex(int arr[], int start, int end, int value) {
         int i;
-        for(i=start;i<=end;i++)
-        {
-            if(arr[i]==value)
-            break;
+        for (i = start; i <= end; i++) {
+            if (arr[i] == value)
+                break;
         }
         return i;
     }
 
-    void preOrder(Node root){
-        if(root==null)
+    void preOrder(Node root) {
+        if (root == null)
             return;
 
-        System.out.print(root.data+" ");
+        System.out.print(root.data + " ");
         preOrder(root.left);
         preOrder(root.right);
     }

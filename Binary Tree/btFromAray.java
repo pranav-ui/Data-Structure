@@ -18,6 +18,9 @@ public class btFromAray {
         return root;
     }
 
+    // inserting node by index no. of array
+    // if you will notice binary tree has been structured levely
+    // which we will take advantage and insert the element from array by idexing.
     Node insertUtil(int arr[], Node root, int i) {
         if (i < arr.length) {
             Node temp = new Node(arr[i]);

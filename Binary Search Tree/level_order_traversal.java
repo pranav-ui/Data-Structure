@@ -34,6 +34,7 @@ public class level_order_traversal {
 
     void levelOrder() {
         int h = height(root);
+        System.out.println("height "+h);
         for (int i = 1; i <= h; i+=2) {
             printGivenLevel(root, i);
             // System.out.println();
