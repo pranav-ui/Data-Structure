@@ -20,7 +20,8 @@ class btFromPostAndIn {
 
     Node buildTree(int in[], int post[], int n) {
         Index pIndex = new Index();
-        pIndex.index = n - 1;
+        // getting last index of postorder 
+        pIndex.index = n - 1;  
         return buildTreeUtil(in, post, 0, n - 1, pIndex);
 
     }
@@ -29,6 +30,7 @@ class btFromPostAndIn {
         if (inStart > inEnd)
             return null;
 
+        // making new node and storing the last index of postorder array
         Node node = new Node(post[pIndex.index]);
         (pIndex.index)--;
 
@@ -37,6 +39,7 @@ class btFromPostAndIn {
 
         int sIndex = searchIndex(in, inStart, inEnd, node.data);
 
+        // storing the child value by iterating
         node.right = buildTreeUtil(in, post, sIndex + 1, inEnd, pIndex);
         node.left = buildTreeUtil(in, post, inStart, sIndex - 1, pIndex);
 
