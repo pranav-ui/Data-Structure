@@ -6,11 +6,19 @@ import java.util.*;
 
 class array_rotation {
     /*
-     * void rotate(int arr[], int d, int n) { for (int i = 0; i < d; i++)
-     * rotatebyone(arr, n); }
+     * void rotate(int arr[], int d, int n) 
+     * { 
+     *      for (int i = 0; i < d; i++)
+     *          rotatebyone(arr, n); 
+     * }
      * 
-     * void rotatebyone(int arr[],int n) { int i,temp=arr[0]; for(i=0;i<n-1;i++) {
-     * arr[i]=arr[i+1]; } arr[i]=temp; }
+     * void rotatebyone(int arr[],int n) { 
+     *      int i,temp=arr[0]; 
+     *      for(i=0;i<n-1;i++) 
+     *          arr[i]=arr[i+1];  
+     *      arr[i]=temp;
+     * }
+     * 
      */
 
     void rotate(int arr[], int d, int n) {
