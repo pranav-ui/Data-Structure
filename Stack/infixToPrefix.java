@@ -1,6 +1,9 @@
+import java.util.Scanner;
 import java.util.*;
 
-public class infixToPostfix {
+public class infixToPrefix {
+
+    static Stack<Character> s = new Stack<>();
 
     static int Prec(char ch) {
         switch (ch) {
@@ -16,39 +19,44 @@ public class infixToPostfix {
         return -1;
     }
 
-    static String infixtopostfixUtil(String str) {
-        String postfix = new String("");
-        Stack<Character> s = new Stack<>();
+    static void toPrefix(StringBuffer str) {
+        String prefix = new String("");
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
-            if (Character.isLetterOrDigit(c))
-                postfix += c;
-
-            else if (c == '(')
+            if (Character.isLetterOrDigit(c)) {
+                prefix += c;
+            } else if (c == '(')
                 s.push(c);
-
             else if (c == ')') {
                 while (!s.isEmpty() && s.peek() != '(')
-                    postfix += s.pop();
+                    prefix += s.pop();
 
                 s.pop();
             } else {
                 while (!s.isEmpty() && Prec(c) <= Prec(s.peek()))
-                    postfix += s.pop();
+                    prefix += s.pop();
 
                 s.push(c);
             }
 
         }
+
         while (!s.isEmpty())
-            postfix += s.pop();
-        return postfix;
+            prefix += s.pop();
+        
+        StringBuffer prefixresult = new StringBuffer(prefix);
+        prefixresult.reverse();
+        System.out.println(prefixresult);
 
     }
 
     public static void main(String[] args) {
+        String str;
         Scanner obj = new Scanner(System.in);
-        String str = obj.next();
-        System.out.println(infixtopostfixUtil(str));
+        str = obj.next();
+        StringBuffer st = new StringBuffer(str);
+        st.reverse();
+        toPrefix(st);
+
     }
-} 
+}
