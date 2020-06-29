@@ -19,7 +19,7 @@ public class infixToPrefix {
         return -1;
     }
 
-    static void toPrefix(StringBuffer str) {
+    static void toPrefix(StringBuilder str) {
         String prefix = new String("");
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
@@ -44,7 +44,7 @@ public class infixToPrefix {
         while (!s.isEmpty())
             prefix += s.pop();
         
-        StringBuffer prefixresult = new StringBuffer(prefix);
+        StringBuilder prefixresult = new StringBuilder(prefix);
         prefixresult.reverse();
         System.out.println(prefixresult);
 
@@ -54,7 +54,14 @@ public class infixToPrefix {
         String str;
         Scanner obj = new Scanner(System.in);
         str = obj.next();
-        StringBuffer st = new StringBuffer(str);
+        StringBuilder st = new StringBuilder(str);
+        for(int i=0;i<st.length();i++)
+        {
+            if(st.charAt(i)=='(')
+                st.setCharAt(i,')');
+            else if(st.charAt(i)==')')
+                st.setCharAt(i, '(');
+        }
         st.reverse();
         toPrefix(st);
 
