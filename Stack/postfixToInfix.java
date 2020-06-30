@@ -2,15 +2,24 @@ import java.util.*;
 
 public class postfixToInfix {
 
-    static boolean isOperand(char x) {
-        return (x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z');
+    static boolean isOperator(char x) {
+        switch(x)
+        {
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+            case '^':
+                return true;
+        }
+        return false;
     }
 
     static String getInfix(String str) {
         Stack<String> s = new Stack<String>();
 
         for (int i = 0; i < str.length(); i++) {
-            if (isOperand(str.charAt(i)))
+            if (!isOperator(str.charAt(i)))
                 s.push(str.charAt(i) + "");
             else{
                 String ob2 = s.pop();
