@@ -13,30 +13,29 @@ class Node {
 public class levelOrderByLine {
     Node root;
 
-    void levelOrder(Node root)
-    {
+    void levelOrder(Node root) {
         Queue<Node> q = new LinkedList<Node>();
         q.add(root);
         int count_node;
-        while(true)
-        {
-            count_node=q.size();
-            if(count_node==0)
+        while (true) {
+            count_node = q.size();
+            
+            if (count_node == 0)
                 break;
 
-            while(count_node>0)
-            {
-                Node temp=q.poll();
-                System.out.print(temp.data+" ");
-                if(temp.left!=null)
+            while (count_node > 0) {
+                Node temp = q.poll();
+                System.out.print(temp.data + " ");
+                if (temp.left != null)
                     q.add(temp.left);
-                if(temp.right!=null)
+                if (temp.right != null)
                     q.add(temp.right);
                 count_node--;
             }
             System.out.println();
         }
     }
+
     public static void main(String[] args) {
         levelOrderByLine bt = new levelOrderByLine();
         bt.root = new Node(1);
